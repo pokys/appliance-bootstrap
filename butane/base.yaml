@@ -1,0 +1,24 @@
+variant: fcos
+version: 1.5.0
+
+passwd:
+  users:
+    - name: core
+      ssh_authorized_keys:
+        - ssh-ed25519 REPLACE_ME_WITH_YOUR_SSH_KEY
+
+storage:
+  files:
+    - path: /etc/motd
+      mode: 0644
+      contents:
+        inline: |
+          ============================
+          appliance-bootstrap
+          step1 ignition OK
+          ============================
+
+systemd:
+  units:
+    - name: sshd.service
+      enabled: true
